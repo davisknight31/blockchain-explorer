@@ -22,7 +22,10 @@ namespace BlockchainExplorer.Services.Domain
 
         public async Task<BlockReceiptsResponse> RetrieveBlockReceipts()
         {
-            return await _alchemyClient.CreatePostRequest();
+            //Will want to get latest on main list, but could allow user to choose a block to view receipts of
+            //string block = "0x14511fc";
+            string block = "latest";
+            return await _alchemyClient.PostEthGetBlockReceipts(block);
 
         }
 

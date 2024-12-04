@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5D0CE023-E132-441D-A5FC-CD62676821DF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BlockchainExplorer", "BlockchainExplorer", "{7455C63E-3C44-4453-84F4-290492A6CDC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlockchainExplorer", "src\BlockchainExplorer\BlockchainExplorer\BlockchainExplorer.csproj", "{34A713E2-8E55-4F9F-803B-1B745C8E5BE9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{519CAD40-F1C4-467E-8DD4-AACCF3344397}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BlockchainExplorer.Tests", "BlockchainExplorer.Tests", "{ED59B9BB-DA66-4DF0-9F34-7A53A2715936}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlockchainExplorer.Tests", "test\BlockchainExplorer.Tests\BlockchainExplorer.Tests\BlockchainExplorer.Tests.csproj", "{8AF6B608-B717-4594-B271-390381080BFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34A713E2-8E55-4F9F-803B-1B745C8E5BE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34A713E2-8E55-4F9F-803B-1B745C8E5BE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34A713E2-8E55-4F9F-803B-1B745C8E5BE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34A713E2-8E55-4F9F-803B-1B745C8E5BE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AF6B608-B717-4594-B271-390381080BFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AF6B608-B717-4594-B271-390381080BFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AF6B608-B717-4594-B271-390381080BFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AF6B608-B717-4594-B271-390381080BFF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7455C63E-3C44-4453-84F4-290492A6CDC4} = {5D0CE023-E132-441D-A5FC-CD62676821DF}
+		{34A713E2-8E55-4F9F-803B-1B745C8E5BE9} = {7455C63E-3C44-4453-84F4-290492A6CDC4}
+		{ED59B9BB-DA66-4DF0-9F34-7A53A2715936} = {519CAD40-F1C4-467E-8DD4-AACCF3344397}
+		{8AF6B608-B717-4594-B271-390381080BFF} = {ED59B9BB-DA66-4DF0-9F34-7A53A2715936}
+	EndGlobalSection
+EndGlobal

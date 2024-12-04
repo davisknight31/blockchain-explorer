@@ -19,7 +19,7 @@ public class TransactionsController : ControllerBase
     }   
 
     [HttpGet]
-    public async Task<IActionResult> Get()
+    public async Task<IActionResult> GetBlockReceipts()
     {
         var response = await _transactionsService.RetrieveBlockReceipts();
 

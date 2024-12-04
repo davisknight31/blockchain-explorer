@@ -1,5 +1,6 @@
 ﻿using BlockchainExplorer.Interfaces.External;
 using BlockchainExplorer.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,30 +21,40 @@ public class AlchemyClient : IAlchemyClient
         _httpClientFactory = httpClientFactory;
     }
 
-    public async Task<BlockReceiptsResponse> CreatePostRequest()
+    public async Task<string> CreateHttpRequest(HttpMethod method, string relativeUrl, HttpContent content)
     {
         using var client = _httpClientFactory.CreateClient();
-
-        var requestBody = new
-        {
-            id = 1,
-            jsonrpc = "2.0",
-            method = "eth_getBlockReceipts",
-            @params = new[] { "0x14511fc" }
-        };
 
         client.DefaultRequestHeaders.Add("Accept", "application/json");
         client.BaseAddress = new Uri(AlchemyEthBaseAddress);
 
-        var response = await client.PostAsJsonAsync("", requestBody);
+        var request = new HttpRequestMessage(method, relativeUrl) { Content = content };
+
+        var response = await client.SendAsync(request);
+
 
         if (!response.IsSuccessStatusCode)
         {
             return null;
         }
 
-        return await response.Content.ReadFromJsonAsync<BlockReceiptsResponse>();
+        return await response.Content.ReadAsStringAsync();
+    }
 
+    public async Task<BlockReceiptsResponse> PostEthGetBlockReceipts(string block)
+    {
+        var requestBody = new
+        {
+            id = 1,
+            jsonrpc = "2.0",
+            method = "eth_getBlockReceipts",
+            @params = new[] { block }
+        };
+
+        var content = JsonContent.Create(requestBody);
+
+        var responseString = await CreateHttpRequest(new HttpMethod("POST"), "", content);
+        return JsonConvert.DeserializeObject<BlockReceiptsResponse>(responseString);
 
     }
 
