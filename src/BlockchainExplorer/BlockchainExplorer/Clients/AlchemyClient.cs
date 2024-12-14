@@ -10,35 +10,19 @@ using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace BlockchainExplorer.Clients;
-public class AlchemyClient : IAlchemyClient
+public class AlchemyClient : ClientBase, IAlchemyClient
 {
     private readonly string AlchemyEthBaseAddress = "https://eth-mainnet.g.alchemy.com/v2/qctIaVrmpmFFsct4SJ3ijJBzI-USRtJA";
-    private readonly IHttpClientFactory _httpClientFactory;
 
 
-    public AlchemyClient(IHttpClientFactory httpClientFactory)
+    public AlchemyClient(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
     {
-        _httpClientFactory = httpClientFactory;
+        
     }
 
-    public async Task<string> CreateHttpRequest(HttpMethod method, string relativeUrl, HttpContent content)
+    public Task<SingleResultValueAlchemyResponse<string>> GetBlockNumber()
     {
-        using var client = _httpClientFactory.CreateClient();
-
-        client.DefaultRequestHeaders.Add("Accept", "application/json");
-        client.BaseAddress = new Uri(AlchemyEthBaseAddress);
-
-        var request = new HttpRequestMessage(method, relativeUrl) { Content = content };
-
-        var response = await client.SendAsync(request);
-
-
-        if (!response.IsSuccessStatusCode)
-        {
-            return null;
-        }
-
-        return await response.Content.ReadAsStringAsync();
+        throw new NotImplementedException();
     }
 
     public async Task<BlockReceiptsResponse> PostEthGetBlockReceipts(string block)
@@ -53,7 +37,7 @@ public class AlchemyClient : IAlchemyClient
 
         var content = JsonContent.Create(requestBody);
 
-        var responseString = await CreateHttpRequest(new HttpMethod("POST"), "", content);
+        var responseString = await CreateHttpRequest(new HttpMethod("POST"),AlchemyEthBaseAddress, "", content);
         return JsonConvert.DeserializeObject<BlockReceiptsResponse>(responseString);
 
     }

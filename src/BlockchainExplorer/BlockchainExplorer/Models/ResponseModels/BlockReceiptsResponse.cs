@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace BlockchainExplorer.Models;
 
-public class BlockReceiptsResponse
+public class BlockReceiptsResponse : BaseAlchemyResponse
 {
-    public string JsonRpc { get; set; }
-    public int Id { get; set; }
     public List<BlockReceiptResultItem> Result { get; set; } = [];
 }
 

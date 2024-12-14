@@ -9,7 +9,7 @@ namespace BlockchainExplorer.Interfaces.External
 {
     public interface IAlchemyClient
     {
-        public Task<string> CreateHttpRequest(HttpMethod method, string relativeUrl, HttpContent requestObject);
+        public Task<SingleResultItemAlchemyResponse<string>> GetBlockNumber();
         public Task<BlockReceiptsResponse> PostEthGetBlockReceipts(string block);
 
     }
